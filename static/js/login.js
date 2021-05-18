@@ -11,6 +11,7 @@ form.onsubmit= function(event){
         if (username.value === loginDeets.user && password.value === loginDeets.pass) {
             alert("Login successful");
             console.log('Login successful')
+            window.location='/chat';
         } else {
             alert("Wrong credentials");
             console.log('Wrong credentials')

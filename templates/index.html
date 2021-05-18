@@ -3,23 +3,52 @@
 {% block title%}Chat{% endblock%}
 
 {% block body%}
-<div class="login">
-  <div class="login-triangle"></div>
-  <h2 class="login-header">Chat App</h2>
-  <div class="login-container">
-    <form action="/" method="POST" id="form">
-      <p>
-        <input type="tex" id="username" class="form-control" placeholder="Username" required />
-      </p>
-      <p>
-        <input type="password" id="password" class="form-control" placeholder="Password" required />
-      </p>
-      <button type="submit" class="btn btn-outline-dark">
-        Log In
-      </button>
-    </form>
+
+<div class="wrapper">
+  <div class="sidebar">
+    <div class="bg_shadow"></div>
+    <div class="sidebar__inner">
+      <div class="close">
+        <i class="fas fa-times"></i>
+      </div>
+      <div class="profile_info">
+        <div class="profile_data">
+          <p class="name">FLACK</p>
+        </div>
+      </div>
+      <ul class="siderbar_menu">
+        <li><a href="#">
+            <div class="icon"><i class="fas fa-laptop"></i></div>
+            <div class="title">Dashboard</div>
+            <!--Channels-->
+          </a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="main_container">
+    <div class="top_navbar">
+      <div class="hamburger">
+        <div class="hamburger__inner">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+      <ul class="menu">
+      </ul>
+      <ul class="right_bar">
+        <li><i class="fas fa-sign-out-alt"></i></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="item">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque nemo quaerat vel iure quam repudiandae
+        tempora velit sed ducimus obcaecati eum hic dignissimos porro, accusantium at corrupti dolor aut non suscipit
+        eveniet cumque quo culpa?
+      </div>
+
+    </div>
+
   </div>
 </div>
-<script src="static\js\login.js"></script>
-<!--No es necesario asegurarse que el DOM carga ya que está de último-->
+
 {% endblock%}

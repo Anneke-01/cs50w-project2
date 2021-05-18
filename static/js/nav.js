@@ -6,6 +6,7 @@ socket.on("connection", data => {
 
 document.querySelector("#newmessage").onsubmit = () =>{
     let message = document.querySelector("#message").value;
+    console.log(message)
     document.querySelector("#message").value = "";
 
     let mensaje = {"usuario:":username}

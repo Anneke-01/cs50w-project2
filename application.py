@@ -10,11 +10,11 @@ socketio = SocketIO(app)
 
 @app.route('/',methods=["GET", "POST"])
 def index():
-    return render_template("index.html")
+    return render_template("login.html")
 
 @app.route('/chat',methods=["GET", "POST"])
 def chat():
-    return render_template("chat.html")
+    return render_template("index.html")
 
 @socketio.on("prueba")
 def msj(data):
