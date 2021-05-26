@@ -4,12 +4,11 @@ socket.on("connection", data => {
     alert("entraste wey :D");
 });
 
-document.querySelector("#newmessage").onsubmit = () =>{
-    let message = document.querySelector("#message").value;
+document.querySelector("#message-form").onsubmit = () =>{
+    let message = document.querySelector("#message-input").value;
     console.log(message)
-    document.querySelector("#message").value = "";
+    document.querySelector("#message-input").value = "";
 
-    let mensaje = {"usuario:":username}
     socket.emit("prueba",{"mensaje": message});
     return false;
 
@@ -18,7 +17,7 @@ document.querySelector("#newmessage").onsubmit = () =>{
 socket.on("recibido", data => {
     console.log(data);
     let li = document.createElement("li");
-    li.textContent = data.mensaje;
+    li.textContent = data.mensaje + " " + data.username;
     document.querySelector("#messagelist").append(li);
 });
 

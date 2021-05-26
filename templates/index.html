@@ -3,7 +3,12 @@
 {% block title%}Chat{% endblock%}
 
 {% block body%}
-
+<script>
+  if(!localStorage.username){ // Se va a tratar de obtener la variable desde el LS
+    localStorage.username = "{{ session.username }}";
+    localStorage.canal = "{{ session.canal }}"; // Lo que se hace es que cuando entre los define directamente
+  }
+</script>
 <div class="wrapper">
   <div class="sidebar">
     <div class="bg_shadow"></div>
@@ -18,8 +23,8 @@
       </div>
       <ul class="siderbar_menu">
         <li><a href="#">
-            <div class="icon"><i class="fas fa-laptop"></i></div>
-            <div class="title">Dashboard</div>
+            <!--<div class="icon"><i class="fas fa-laptop"></i></div>-->
+            <div class="title">#General</div>
             <!--Channels-->
           </a></li>
       </ul>
@@ -35,20 +40,38 @@
       <ul class="menu">
       </ul>
       <ul class="right_bar">
-        <li><i class="fas fa-sign-out-alt"></i></li>
+        <li>
+          <a class="fas fa-sign-out-alt" href="/logout"></a>
+        </li>
       </ul>
     </div>
 
     <div class="container">
       <div class="item">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque nemo quaerat vel iure quam repudiandae
-        tempora velit sed ducimus obcaecati eum hic dignissimos porro, accusantium at corrupti dolor aut non suscipit
-        eveniet cumque quo culpa?
+        <div class="" id="chat">
+          <ul id="messagelist"></ul>
+      </div>
       </div>
 
     </div>
 
+    <div class="footer">
+      <form action="" method="post" id="message-form">
+        <div class="input-group mb-3 message-input">
+          <input id="message-input" type="text" class="form-control" placeholder="Enter message here"
+            aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button id="submit-send-message" type="submit" class="btn btn-light add-button">
+              <div id="send">Send</div>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
   </div>
+
 </div>
+<script src="/static/js/nav.js"></script>
 
 {% endblock%}
