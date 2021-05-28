@@ -1,28 +1,3 @@
 {
-    "users": [
-        {
-            "username": "Anneke"
-        },
-        {
-            "username": "Ana"
-        },
-        {
-            "username": "Adriel"
-        },
-        {
-            "username": "Adriel1"
-        },
-        {
-            "username": "prueba"
-        },
-        {
-            "username": "prueba2"
-        },
-        {
-            "username": "prueba3"
-        },
-        {
-            "username": "prueba4"
-        }
-    ]
+    "users": []
 }

@@ -3,8 +3,9 @@
 {% block title%}Chat{% endblock%}
 
 {% block body%}
+
 <script>
-  if(!localStorage.username){ // Se va a tratar de obtener la variable desde el LS
+  if (!localStorage.username) { // Se va a tratar de obtener la variable desde el LS
     localStorage.username = "{{ session.username }}";
     localStorage.canal = "{{ session.canal }}"; // Lo que se hace es que cuando entre los define directamente
   }
@@ -21,12 +22,19 @@
           <p class="name">FLACK</p>
         </div>
       </div>
-      <ul class="siderbar_menu">
-        <li><a href="#">
-            <!--<div class="icon"><i class="fas fa-laptop"></i></div>-->
-            <div class="title">#General</div>
-            <!--Channels-->
-          </a></li>
+      <ul id="canal" class="siderbar_menu">
+        <h2 id="channel">Channels</h2>
+        <form action="" method="post" id="joinroom">
+          <div style="padding-left: 10%; padding-right:10%;"><input type="text" id="room" name="room" class="form-control"
+            placeholder="Room" required>
+          </div>
+          <div style="padding-left: 10%; padding-right:10%; margin-top:10px;"><button class="btn btn-lg btn-primary btn-block" type="submit">Add</button></div>
+        </form>
+        <ul>
+          {% for canal in canales %}
+          <li><button value="{{canal}}">{{canal}}</button></li>
+          {% endfor %}
+        </ul>
       </ul>
     </div>
   </div>
@@ -38,6 +46,10 @@
         </div>
       </div>
       <ul class="menu">
+        <li class="username">
+          <i id="astronauticon" class="fas fa-user-circle"> </i>
+          {{ username}}
+        </li>
       </ul>
       <ul class="right_bar">
         <li>
@@ -45,32 +57,45 @@
         </li>
       </ul>
     </div>
-
+    
     <div class="container">
-      <div class="item">
+      <div>
+        <ul id="channels-list" class="list-group">
+        </ul>
+      </div>
+      <div class="messages" id="chat">
+        <h3 class="msg--date">Today - 19:44</h3>
+        <div class="msg msg--me">
+          <blockquote>
+            <li id="messagelist"></li>
+          </blockquote>
+        </div>
+        
+        <div class="msg msg--them">
+          <blockquote>He was a zombie?</blockquote>
+        </div>
+        <!--
         <div class="" id="chat">
           <ul id="messagelist"></ul>
+          <div id="current_channel" class="message-stack"></div>
+        </div>-->
       </div>
-      </div>
-
     </div>
-
     <div class="footer">
       <form action="" method="post" id="message-form">
         <div class="input-group mb-3 message-input">
-          <input id="message-input" type="text" class="form-control" placeholder="Enter message here"
-            aria-describedby="basic-addon2">
+          <input id="message-input" type="text" class="form-control"
+            placeholder="Enter message here" aria-describedby="basic-addon2" required>
           <div class="input-group-append">
-            <button id="submit-send-message" type="submit" class="btn btn-light add-button">
-              <div id="send">Send</div>
+            <button id="submit-send-message" type="submit" class="btn btn-light
+              add-button">
+              <div id="send"><i class="fas fa-paper-plane"></i></div>
             </button>
           </div>
         </div>
       </form>
     </div>
-
   </div>
-
 </div>
 <script src="/static/js/nav.js"></script>
 

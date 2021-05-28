@@ -3,6 +3,15 @@
 {% block title%}Chat{% endblock%}
 
 {% block body%}
+{% if session.username %}
+<script>
+    window.location = "/chat";
+</script>
+{% else %}
+<script>
+    localStorage.clear();
+</script>
+{% endif %}
 
 
 <div class="login">
