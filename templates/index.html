@@ -65,11 +65,13 @@
       </div>
       <div class="messages" id="chat">
         <h3 class="msg--date">Today - 19:44</h3>
-        <div class="msg msg--me">
-          <blockquote>
-            <li id="messagelist"></li>
-          </blockquote>
-        </div>
+        
+          <div class="msg msg--me" >
+            <blockquote>
+              <li id="messagelist"></li>
+            </blockquote>
+          </div>
+        
         
         <div class="msg msg--them">
           <blockquote>He was a zombie?</blockquote>
@@ -85,7 +87,7 @@
       <form action="" method="post" id="message-form">
         <div class="input-group mb-3 message-input">
           <input id="message-input" type="text" class="form-control"
-            placeholder="Enter message here" aria-describedby="basic-addon2" required>
+            placeholder="Enter message here"  required>
           <div class="input-group-append">
             <button id="submit-send-message" type="submit" class="btn btn-light
               add-button">
@@ -97,6 +99,21 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    
+    $('#message-input').emojioneArea({
+      pickerPosition:'top'
+      
+    })
+    
+  });
+  /*
+  $('#message-input').emojioneArea({
+      pickerPosition:'top'
+  })*/
+</script>
 <script src="/static/js/nav.js"></script>
+
 
 {% endblock%}

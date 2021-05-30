@@ -26,10 +26,11 @@ document.querySelector("#message-form").onsubmit = () =>{
 
 socket.on("recibido", data => {
     console.log(data);
-    let li = document.createElement("li");
-    li.textContent = data.mensaje + " " + data.username;
-    console.log(li);
-    document.querySelector("#messagelist").append(li);
+    
+    let el = document.querySelector(".msg.msg--me").cloneNode(true);
+    el.children[0].textContent = data.mensaje + " " + data.username;
+    console.log(el);
+    document.querySelector("div#chat").append(el);
 });
 
 
@@ -85,12 +86,14 @@ function refresh(){
             console.log(resp.items); 
             let mensajes = resp.items;
             for(var i = 0; i <mensajes.length; i++){
+                
                 let li = document.createElement("li");
                 li.setAttribute("class","justify-content: flex-end")
                 li.textContent = mensajes[i].mensaje + " " + mensajes[i].username; 
                 console.log(li);
                 
                 document.querySelector("#messagelist").append(li);
+                
             }
         }
     }
