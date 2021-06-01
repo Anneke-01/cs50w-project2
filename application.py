@@ -62,7 +62,9 @@ def index():
 @app.route('/chat',methods=["GET", "POST"])
 @login_required
 def chat():
+    
     canales = []
+    
     for i in mensajes:
         canales.append(i)
     return render_template("index.html", username = session["username"], canales = canales)
@@ -100,7 +102,8 @@ def msj(hala):
     respuesta = {
         "room" : session.get("canal"),
        "username" : session.get("username"), # si se pone corchete, username no existe se da una excepción o key error. En cambio, si es entre paréntesis (get) devuelve none
-       "mensaje" : hala["mensaje"]  # debe de ser igual que en el emit
+       "mensaje" : hala["mensaje"], # debe de ser igual que en el emit
+       "time": hala["time"]
     }
 
     if mensajes.get(session.get("canal")):
@@ -116,31 +119,33 @@ def msj(hala):
 @socketio.on('join')
 def on_join(data):
     print(data)
+    
     room = data["room"]
 
     session["canal"] = room
     join_room(room)
-
+    print("---------------------------------------" + room)
     msj = {
         "username":"Admin",
-        "mensaje":session["username"] + ' has entered the room.'
+        "mensaje":session["username"] + ' has entered the room.',
+        "time": "00:00"
     }
 
     emit("recibido",msj,room = session["canal"])
+   
 
 @socketio.on('Crear')
 def crear(room):
     r = room["room"]
     if not mensajes.get(r):
-        mensajes["r"] = []
+        mensajes[r] = []
         emit("agregarcanal", {"room":r},broadcast=True)
 
 
 @socketio.on('leave')
 def on_leave(data):
+    room = session["canal"]
 
-    room = data["canal"]
-    
     leave_room(room)
     session["canal"] = ""
 

@@ -1,4 +1,29 @@
+.canal{
+  margin: top 10px;
+  padding-left:0.7em; 
+  padding-right:0.7em;
+  
+}
+.btn1{
+  
+  background-color:#007bff;
+    
+  border: none;
+  color: white;
+  padding: 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 2px;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  padding-left:0.7em; 
+  padding-right:0.7em;
 
+  border-radius: 6px;
+}
 .form{
   width: 100%;
   max-width: 330px;
@@ -10,15 +35,15 @@
   margin: 10px 0px;
 }
 html, body {
-  /*height: 100%;*/
+  height: 100%;
   font: 100%/1.5em "Varela Round", sans-serif;
 }
 
 body {
-flex-direction: column;
+  flex-direction: column;
 }
 
-body,.msg{
+body,.msg,.form{
     display: flex;
 }
 
@@ -33,17 +58,28 @@ body,.msg{
 
 
 .msg {
-    position: relative;
-    margin-bottom: 2em;
+  position: relative;
+  margin-bottom: 2em;
 }
 
-.msg--date {
-    margin-top: 0;
-    font-size: 1em;
-    font-weight: normal;
-    text-align: center;
-    background: #222;
-    color: #727b80;
+.msg--room {
+  /*margin: auto;
+  width: 50%;
+  border: 1px solid;
+  padding: 0;
+  text-align: center;
+  margin-top: 0;
+  font-size: 1em;
+  font-weight: normal;
+  color: #727b80;
+  margin-top: 1px;
+  position:static;*/
+  margin-top: 0;
+  font-size: 1em;
+  font-weight: normal;
+  text-align: center;
+  background: #222;
+  color: #727b80;
 }
 
 blockquote {
@@ -225,6 +261,7 @@ body {
 .container {
   margin-top: 15px;
   /*overflow-y: scroll;*/
+  overflow: auto;
   margin-left: auto;
   margin-right: auto;
   /*background-color: white;*/
@@ -285,12 +322,13 @@ body {
   background: #2a58ae;
   z-index: 999;
   transition: all 0.3s ease;
+  overflow:auto;
 }
 
 .wrapper .main_container {
   margin-left: 250px;
   width: calc(100% - 250px);
-   transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .wrapper .sidebar__inner .profile_info {

@@ -12,30 +12,38 @@
 </script>
 <div class="wrapper">
   <div class="sidebar">
-    <div class="bg_shadow"></div>
+    
     <div class="sidebar__inner">
-      <div class="close">
-        <i class="fas fa-times"></i>
-      </div>
+      
       <div class="profile_info">
         <div class="profile_data">
           <p class="name">FLACK</p>
         </div>
       </div>
-      <ul id="canal" class="siderbar_menu">
+      <div id="canal" class="siderbar_menu">
         <h2 id="channel">Channels</h2>
+        
         <form action="" method="post" id="joinroom">
-          <div style="padding-left: 10%; padding-right:10%;"><input type="text" id="room" name="room" class="form-control"
-            placeholder="Room" required>
+          <div class="input-group mb-3" style="padding-left:0.7em; padding-right:0.7em;" required>
+            <input type="text" id="room" name="room"  placeholder="Room" class="form-control" required>
+            <div class="input-group-append">
+              <button  class="btn btn-outline-dark" type="submit" style="font-weight: bold; font-size: 17px;">
+              Add
+            </button>
+            </div>
+            
           </div>
-          <div style="padding-left: 10%; padding-right:10%; margin-top:10px;"><button class="btn btn-lg btn-primary btn-block" type="submit">Add</button></div>
+          
         </form>
         <ul>
           {% for canal in canales %}
-          <li><button value="{{canal}}">{{canal}}</button></li>
+          <div class="input-group-append">
+            <li><button class="btn1" type="submit" value="{{canal}}"> #{{canal}}</button></li>
+          </div>
+          
           {% endfor %}
         </ul>
-      </ul>
+      </div>
     </div>
   </div>
   <div class="main_container">
@@ -64,23 +72,8 @@
         </ul>
       </div>
       <div class="messages" id="chat">
-        <h3 class="msg--date">Today - 19:44</h3>
-        
-          <div class="msg msg--me" >
-            <blockquote>
-              <li id="messagelist"></li>
-            </blockquote>
-          </div>
-        
-        
-        <div class="msg msg--them">
-          <blockquote>He was a zombie?</blockquote>
-        </div>
-        <!--
-        <div class="" id="chat">
-          <ul id="messagelist"></ul>
-          <div id="current_channel" class="message-stack"></div>
-        </div>-->
+        <h3 class="msg--room"></h3>
+        <ul id="messagelist"></ul>
       </div>
     </div>
     <div class="footer">
