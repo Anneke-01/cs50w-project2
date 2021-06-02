@@ -13,17 +13,21 @@ document.querySelector("#message-form").onsubmit = () =>{
     let message = document.querySelector("#message-input").value;
     console.log(message);
     
-    document.querySelector("#message-input").value = " ";
+    if(message == " "){
+        alert("pls write something");
+    }else{
+        var info = {
+            "mensaje": message,
+            "username": localStorage.username,
+            "room":localStorage.canal,
+            "time": timestamp.getHours() + ":" + timestamp.getMinutes()
     
-    var info = {
-        "mensaje": message,
-        "username": localStorage.username,
-        "room":localStorage.canal,
-        "time": timestamp.getHours() + ":" + timestamp.getMinutes()
-
-    };
-    document.querySelector("#message-input").value = " ";
-    socket.emit("prueba",info);
+        };
+        document.querySelector("#message-input").value = " ";
+        socket.emit("prueba",info);
+    }
+    
+    
     return false;
 
 };
@@ -57,7 +61,9 @@ socket.on("recibido", data => {
 document.querySelector("#joinroom").onsubmit = () =>{
     
     let room = document.querySelector("#room").value;
+
     console.log(room)
+    document.querySelector("#room").value = "";
     var validador = true;
     document.querySelectorAll(".btn1").forEach(button => {
         if(button.value == room){

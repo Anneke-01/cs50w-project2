@@ -79,7 +79,7 @@
       </div>
     </div>
     <div class="footer">
-      <form action="" method="post" id="message-form">
+      <form action="" method="post" id="message-form" required>
         <div class="input-group mb-3 message-input">
           <input id="message-input" type="text" class="form-control"
             placeholder="Enter message here"  required>
@@ -95,14 +95,10 @@
   </div>
 </div>
 <script type="text/javascript">
-  
-  $(document).ready(function() {
-    
+  $(document).ready(function() { 
     $('#message-input').emojioneArea({
-      pickerPosition:'top'
-      
-    })
-    
+      pickerPosition:'top'   
+    })  
   });
   
   /*
