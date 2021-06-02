@@ -1,3 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Montserrat", sans-serif;
+  
+}
 .canal{
   margin: top 10px;
   padding-left:0.7em; 
@@ -34,16 +43,17 @@
 .form input.form-control{
   margin: 10px 0px;
 }
-html, body {
-  height: 100%;
+html{
+  /*height: 100%;*/
   font: 100%/1.5em "Varela Round", sans-serif;
 }
+/*
 
 body {
   flex-direction: column;
 }
-
-body,.msg,.form{
+*/
+.msg,.form{
     display: flex;
 }
 
@@ -63,22 +73,12 @@ body,.msg,.form{
 }
 
 .msg--room {
-  /*margin: auto;
-  width: 50%;
-  border: 1px solid;
-  padding: 0;
-  text-align: center;
-  margin-top: 0;
-  font-size: 1em;
-  font-weight: normal;
-  color: #727b80;
-  margin-top: 1px;
-  position:static;*/
+  
   margin-top: 0;
   font-size: 1em;
   font-weight: normal;
   text-align: center;
-  background: #222;
+  
   color: #727b80;
 }
 
@@ -123,7 +123,10 @@ background-color: #0099cc; margin-left: 1em;
 
 
 .messages {
-flex: 1; overflow: auto;
+  flex: 1; 
+  overflow: auto;
+  height: 78vh;
+  margin-top: 1vh
 }
 
 .msg--them {
@@ -259,15 +262,17 @@ body {
   background-color: #171C2F;
 }
 .container {
+  /*
   margin-top: 15px;
-  /*overflow-y: scroll;*/
+  overflow-y: scroll;
   overflow: auto;
   margin-left: auto;
   margin-right: auto;
-  /*background-color: white;*/
+  background-color: white;
   width: 100%;
   height: 80%;
   /*padding: 10px 10px 10px 33px;*/
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .footer {
@@ -278,18 +283,12 @@ body {
   background-color: rgb(241, 218, 182);
   color: white;
   text-align: center;
+
 }
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap");
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  list-style: none;
-  font-family: "Montserrat", sans-serif;
-}
+
 
 .wrapper {
   display: flex;
@@ -520,8 +519,8 @@ body {
     right: 15px;
     font-size: 25px;
     color: #fff;
-  display: none;
-  cursor: pointer;
+    display: none;
+    cursor: pointer;
 }
 
 .wrapper .sidebar__inner .close:hover{

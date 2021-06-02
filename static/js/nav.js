@@ -2,6 +2,7 @@ var socket = io.connect(location.protocol + '//' + document.domain + ':' + locat
 
 socket.emit("join",{"room":localStorage.canal});
 refresh();
+let timestamp = new Date();
 
 socket.on("connection", data => {
     console.log("esta entrando ");
@@ -11,8 +12,9 @@ socket.on("connection", data => {
 document.querySelector("#message-form").onsubmit = () =>{
     let message = document.querySelector("#message-input").value;
     console.log(message);
+    
     document.querySelector("#message-input").value = " ";
-    let timestamp = new Date();
+    
     var info = {
         "mensaje": message,
         "username": localStorage.username,
@@ -53,23 +55,31 @@ socket.on("recibido", data => {
 
 
 document.querySelector("#joinroom").onsubmit = () =>{
+    
     let room = document.querySelector("#room").value;
     console.log(room)
-    
-    socket.emit("Crear",{"room":room});
-    socket.emit("leave",{"room":localStorage.canal});
+    var validador = true;
+    document.querySelectorAll(".btn1").forEach(button => {
+        if(button.value == room){
+            alert("Ya hay un canal existente con dicho nombre.");
+            validador=false;
+        }
+    });
+    if(validador == true){
+        socket.emit("Crear",{"room":room});
+        socket.emit("leave",{"room":localStorage.canal});
 
-    socket.emit("join",{"room": room});
+        socket.emit("join",{"room": room});
+        
+        localStorage.canal = room;
+        refresh();
+    }
     
-    localStorage.canal = room;
-    refresh();
     return false;
 };
 socket.on("agregarcanal", data =>{
+    
     var listacanales = document.querySelector("#canal");
-    if(room == listacanales){
-        alert("no");
-    }
     var button = document.createElement("button");
     let canal = data["room"];
     button.setAttribute("value",canal);
@@ -95,14 +105,10 @@ document.querySelectorAll(".btn1").forEach(button => {
         }
     }; 
 });
-
-
-
 socket.on("recibidoroom", data => {
     console.log(data);
 
 });
-
 
 function refresh(){
     var element = document.getElementById("messagelist");
@@ -113,7 +119,6 @@ function refresh(){
     let data = new FormData();
     let room = localStorage.canal;
     console.log(room);
-    
     data.append("room",room);
     let request = new XMLHttpRequest();
     request.open("POST","/messages");
@@ -125,30 +130,25 @@ function refresh(){
             //console.log(request);
             // Muestra la información obtenida en la petición
             let resp = this.response;
-            console.log(resp.items); 
-            
+            console.log(resp.items);           
             let mensajes = resp.items;
-            for(var i = 0; i <mensajes.length; i++){
-                
+            for(var i = 0; i <mensajes.length; i++){           
                 let li = document.createElement("li");
-                li.setAttribute("class","justify-content: flex-end")
-                
+                li.setAttribute("class","justify-content: flex-end")           
                 console.log(li);
                 let block = document.createElement("blockquote");
                 let div = document.createElement("div");
-                block.textContent = mensajes[i].mensaje + " " + mensajes[i].username; 
+                block.textContent = mensajes[i].mensaje + " " + mensajes[i].username + " " ; 
                 div.appendChild(block);
                 if(mensajes[i].username == localStorage.username){
                     div.setAttribute("class", "msg msg--them");
                     document.querySelector("#message-input").value = " ";
-
                 }else{
                     div.setAttribute("class","msg msg--me");
                     document.querySelector("#message-input").value = " ";
                 }
                 li.appendChild(div);
-                document.querySelector("#messagelist").append(li);
-                
+                document.querySelector("#messagelist").append(li);               
             }
         }
     }

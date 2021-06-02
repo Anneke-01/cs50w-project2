@@ -12,9 +12,11 @@
 </script>
 <div class="wrapper">
   <div class="sidebar">
-    
+    <div class="bg_shadow"></div>
     <div class="sidebar__inner">
-      
+      <div class="close">
+        <i class="fas fa-times"></i>
+      </div>
       <div class="profile_info">
         <div class="profile_data">
           <p class="name">FLACK</p>
@@ -93,6 +95,7 @@
   </div>
 </div>
 <script type="text/javascript">
+  
   $(document).ready(function() {
     
     $('#message-input').emojioneArea({
@@ -101,11 +104,13 @@
     })
     
   });
+  
   /*
   $('#message-input').emojioneArea({
       pickerPosition:'top'
   })*/
 </script>
+<script src="/static/js/index.js"></script>
 <script src="/static/js/nav.js"></script>
 
 
