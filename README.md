@@ -1,11 +1,11 @@
 # Project 2
 
 Web Programming with Python and JavaScript
-<<<<<<< HEAD
 
 
 
-=======
+
+
 Este proyecto es un servicio de mensajería en línea realizado con Socket.IO,para la respectiva comunicación entre clientes y servidores; JavaScript, para ejecutar código del lado del servidor; y por supuesto, Python y Flask.
 
 Se disponen de 3 plantillas cuyas funcionalidades son las siguientes:
@@ -18,4 +18,4 @@ En /static/js/:
 - index.js: animación para el responsive del sidebar.
 
 Finalmente, para el toque personal utilice el cdnjs "emojionearea" para poder agregar emoji en los mensajes.
->>>>>>> 88ed61833db70ba7356b64e7db6bfc1fb016347f
+
